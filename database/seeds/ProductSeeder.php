@@ -19,35 +19,35 @@ class ProductSeeder extends Seeder
                 'price' => "300",
                 'description' => "A smartphone with 8GB ram and much more features",
                 'category' => "mobile",
-                'gallery' => "images/oppo_mobile.jpg"
+                'gallery' => "images/oppo_mobile.png"
             ],
             [
                 'name' => "LG mobile",
                 'price' => "200",
                 'description' => "A smartphone with 4GB ram and much more features",
                 'category' => "mobile",
-                'gallery' => "images/lg_mobile.jpg"
+                'gallery' => "images/lg_mobile.png"
             ],
             [
                 'name' => "Panasonic TV",
                 'price' => "400",
                 'description' => "A smartTV with much more features",
                 'category' => "tv",
-                'gallery' => "images/panasonic_tv.jpg"
+                'gallery' => "images/panasonic_tv.png"
             ],
             [
                 'name' => "SONY TV",
                 'price' => "500",
                 'description' => "A TV with much more features",
                 'category' => "tv",
-                'gallery' => "images/sony_tv.jpg"
+                'gallery' => "images/sony_tv.png"
             ],
             [
                 'name' => "LG Fridge",
                 'price' => "200",
                 'description' => "A fridge with much more features",
                 'category' => "fridge",
-                'gallery' => "images/lg_fridge.jpg"
+                'gallery' => "images/lg_fridge.png"
             ],
     ]);
     }
