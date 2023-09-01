@@ -1,0 +1,22 @@
+img.slider-img{
+    height: 600px !important;
+    align-items: center;
+}
+
+.custom-product{
+    margin-top: 20px;
+    height: 600px;
+    background-color: #e6e6e6;
+}
+
+.slider-text{
+    background-color: #35443585;
+    border-radius: 10%;
+}
+/* .prev-icon{
+    background-color: #e6e6e6;
+}
+
+.next-icon{
+    background-color: rgba(196, 195, 195, 0);
+} */
