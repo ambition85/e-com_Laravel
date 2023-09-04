@@ -16,7 +16,7 @@ class ProductController extends Controller
     {
         //
         $products = Products::all();
-        return view('products', compact('products'));
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -49,6 +49,8 @@ class ProductController extends Controller
     public function show(Products $products)
     {
         //
+        return view('products.show', compact('products'));
+        // return $products;
     }
 
     /**
@@ -83,5 +85,11 @@ class ProductController extends Controller
     public function destroy(Products $products)
     {
         //
+    }
+
+    public function detail($id){
+        $product =  Products::find($id);
+        return view('products.show', compact('product'));
+        // return "sdfasdf";
     }
 }

@@ -4,7 +4,7 @@ img.slider-img{
 }
 
 .custom-product{
-    margin-top: 20px;
+    margin: 20px;
     height: 600px;
     background-color: #e6e6e6;
 }
@@ -13,10 +13,22 @@ img.slider-img{
     background-color: #35443585;
     border-radius: 10%;
 }
-/* .prev-icon{
-    background-color: #e6e6e6;
+
+.trending-image{
+    height: 150px;
 }
 
-.next-icon{
-    background-color: rgba(196, 195, 195, 0);
-} */
+.trending-item{
+    /* display: flex; */
+    float: left;
+    width: 20%;
+}
+
+.trending-wrapper{
+    margin: 20px;
+}
+
+.detail-img{
+    height: 300px;
+    width: auto;
+}
