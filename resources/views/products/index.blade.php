@@ -1,6 +1,14 @@
 @extends('layouts.layout')
 
 @section('content')
+
+@if($message = Session::get('success'))
+<div class="alert alert-success alert-dismissible fade show">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <p>{{ $message }}</p>
+  </div>
+@endif
+
     <div id="demo" class="carousel slide custom-product" data-ride="carousel">
         <ul class="carousel-indicators">
             @foreach ($products as $product)

@@ -11,10 +11,12 @@
 |
 */
 
-Route::group(['middleware' => ['auth']], function() {
-    Route::get('/', 'ProductController@index');
-    Route::get('/detail/{id}', 'ProductController@detail');
-});
+Route::get('/', 'ProductController@index');
+Route::post('/add_to_cart', "ProductController@addToCart");
+Route::get('/detail/{id}', 'ProductController@detail');
+
+// Route::group(['middleware' => ['auth']], function() {
+// });
 
 // Route::get('/', function () {
 //     return view('welcome');
