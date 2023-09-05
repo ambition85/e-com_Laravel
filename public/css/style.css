@@ -38,3 +38,24 @@ img.slider-img{
     margin-bottom: 20px;
     padding-bottom: 20px;
 }
+
+.cart-title{
+    display: block;
+}
+
+.bill-table{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.td-prodcut-image{
+    height: 30px;
+}
+
+.total_price{
+    text-align: right;
+}
+
+.address_textarea{
+    width: 100%;
+}
