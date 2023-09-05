@@ -32,3 +32,9 @@ img.slider-img{
     height: 300px;
     width: auto;
 }
+
+.cart-list{
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
