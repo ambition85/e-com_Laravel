@@ -2,8 +2,9 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
+    <div class="row cart-title">
         <h1>Cart</h1>
+        <a href="ordernow" class="btn btn-success">Order Now</a>
         <br><br>
     </div>    
     @foreach ($products as $product)
@@ -17,9 +18,10 @@
             <h4>{{$product->description}}</h4>
         </div>
         <div class="col-sm-4">
-            <button class="btn btn-warning">Remove from Cart</button>
+            <a href="/removecart/{{$product->cart_id}}" class="btn btn-warning">Remove from Cart</a>
         </div>
     </div>
     @endforeach
+    <a href="ordernow" class="btn btn-success">Order Now</a>
 </div>
 @endsection

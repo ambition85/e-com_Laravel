@@ -119,9 +119,45 @@ class ProductController extends Controller
         $products = DB::table('cart')
         ->join('products', 'cart.product_id', '=', 'products.id')
         ->where('cart.user_id', $user_id)
-        ->select('products.*')
+        ->select('products.*', 'cart.id as cart_id')
         ->get();
 
         return view('products.cartlist', compact('products'));
+    }
+
+    public function removeCart($id){
+        Cart::destroy($id);
+        return redirect('/cartlist');
+    }
+
+    public function orderNow(){
+        $user_id = Auth::id();
+        $products = Cart::join('products', 'cart.product_id', '=', 'products.id')
+            ->where('cart.user_id', $user_id)
+            ->select('products.*')
+            ->get();
+
+        $totalAmount = Cart::join('products', 'cart.product_id', '=', 'products.id')
+        ->where('cart.user_id', $user_id)
+        ->sum('products.price');
+    
+        $productInfo = [];
+
+        foreach ($products as $product) {
+            $name = $product['name'];
+            $count = isset($productInfo[$name]['count']) ? $productInfo[$name]['count'] + 1 : 1;
+            $pricePerPiece = $product['price'];
+            $totalPrice = $count * $pricePerPiece;
+            $productImage = $product->gallery;
+            
+            $productInfo[$name] = [
+                'count' => $count,
+                'price_per_piece' => $pricePerPiece,
+                'total_price' => $totalPrice,
+                'product_image' => $productImage
+            ];
+        }
+
+        return view('products.ordernow', compact('productInfo', 'totalAmount'));
     }
 }
