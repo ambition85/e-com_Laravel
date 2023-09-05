@@ -11,9 +11,15 @@
 |
 */
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/', 'ProductController@index');
-Route::post('/add_to_cart', "ProductController@addToCart");
-Route::get('/detail/{id}', 'ProductController@detail');
+Route::post('add_to_cart', "ProductController@addToCart");
+Route::get('detail/{id}', 'ProductController@detail');
+Route::get('cartlist', "ProductController@cartList");
+
 
 // Route::group(['middleware' => ['auth']], function() {
 // });
@@ -22,6 +28,4 @@ Route::get('/detail/{id}', 'ProductController@detail');
 //     return view('welcome');
 // });
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
