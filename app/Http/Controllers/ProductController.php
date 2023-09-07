@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Products;
 use App\Cart;
+use App\Order;
 use Illuminate\Http\Request;
 // use App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\Auth;
@@ -136,7 +137,6 @@ class ProductController extends Controller
             ->where('cart.user_id', $user_id)
             ->select('products.*')
             ->get();
-
         $totalAmount = Cart::join('products', 'cart.product_id', '=', 'products.id')
         ->where('cart.user_id', $user_id)
         ->sum('products.price');
@@ -159,5 +159,23 @@ class ProductController extends Controller
         }
 
         return view('products.ordernow', compact('productInfo', 'totalAmount'));
+    }
+
+    public function orderPlace(Request $req)
+    {
+        $userId = Auth::id();
+        $allCart = Cart::where('user_id', $userId)->get();
+        foreach($allCart as $cart){
+            $order = new Order;
+            $order->user_id = $cart->user_id;
+            $order->product_id = $cart->product_id;
+            $order->status = "pending";
+            $order->payment_method = $req->payment;
+            $order->payment_status = "pending";
+            $order->address = $req->address;
+            $order->save();
+        }
+        Cart::where('user_id', $userId)->delete();
+        return redirect('/');
     }
 }

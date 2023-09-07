@@ -21,6 +21,7 @@ Route::get('detail/{id}', 'ProductController@detail');
 Route::get('cartlist', "ProductController@cartList");
 Route::get('removecart/{id}', "ProductController@removeCart");
 Route::get('ordernow', "ProductController@orderNow");
+Route::post('orderplace', "ProductController@orderPlace");
 
 
 // Route::group(['middleware' => ['auth']], function() {

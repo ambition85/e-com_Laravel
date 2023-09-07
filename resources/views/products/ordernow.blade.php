@@ -23,12 +23,13 @@
     </tbody>
   </table>
   <h3 class="total_price">Total Price : {{$totalAmount}}</h3><br><br>
-  <form action="">
+  <form action="/orderplace" method="POST">
+        @csrf
         <textarea type="text" name="address" class="address_textarea" placeholder="Input your address"></textarea><br><br>
         <p><strong>Payment method</strong></p>
-        <input type="radio" name="payment"><span>online payment</span><br><br>
-        <input type="radio" name="payment"><span>EMI payment</span><br><br>
-        <input type="radio" name="payment"><span>Payment on Delivery</span><br><br>
+        <input type="radio" name="payment" value="online"><span>online payment</span><br><br>
+        <input type="radio" name="payment" value="EMI"><span>EMI payment</span><br><br>
+        <input type="radio" name="payment" value="cash"><span>Payment on Delivery</span><br><br>
         <button class="btn btn-primary" type="submit">Order Now</button>
   </form>
 
