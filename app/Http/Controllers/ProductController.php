@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Products;
 use App\Cart;
+use App\User;
 use App\Order;
 use Illuminate\Http\Request;
 // use App\Http\Controllers\Auth;
@@ -177,5 +178,29 @@ class ProductController extends Controller
         }
         Cart::where('user_id', $userId)->delete();
         return redirect('/');
+    }
+
+    public function myOrders(){
+        if(!Auth::check())
+        {
+            return redirect('/login');
+        }
+
+        $userId = Auth::id();
+
+        $myorders = DB::table('orders')->join('products', 'orders.product_id', '=', 'products.id')
+        ->where('orders.user_id', $userId)
+        ->get();
+
+        return view('products.myorders', compact('myorders'));
+    }
+
+    public function search(Request $req)
+    {
+        $searchedProducts = Products::where('name', 'like', '%'.$req->input('query').'%')
+        ->get();
+        return view('products.search', compact('searchedProducts'));
+
+        // return $req->input('query');
     }
 }
